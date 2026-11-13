@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>dVerse Technologies</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="dVerse Technologies is an AI and product engineering company in Chennai, India. AI automation, process automation, software, web, spatial intelligence and hardware.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a white spec-sheet canvas. X-style media tiles for the work, a DJI-style bento for services,
+   one black band for the hardware story, mono annotations like an engineering drawing. Single light theme by request. */
+:root{
+  --paper:#ffffff;
+  --ink:#0a0e0f;
+  --ink-2:#364144;
+  --mute:#667174;
+  --line:#e0e7e8;
+  --tint:#f1f6f7;
+  --blue:#1abed3;
+  --blue-deep:#06788a;
+  --blue-wash:#e5f7fa;
+  --night:#040607;
+  --night-2:#0e1416;
+  --night-line:#20292c;
+  --night-mute:#8f9b9e;
+  --f-sans:"Geist","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --r-lg:22px;
+  --r-md:14px;
+  --wrap:1320px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue-deep);outline-offset:3px;border-radius:6px}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:600}
+p{margin:0}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+.section{padding-block:clamp(72px,10vw,140px)}
+.mono{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:8px;height:8px;background:var(--blue);border-radius:2px;flex:none}
+.h2{font-size:clamp(2.25rem,5vw,4.25rem);line-height:1;letter-spacing:-.04em}
+.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);line-height:1.55;color:var(--ink-2);max-width:40rem}
+.sec-head{display:grid;gap:22px;margin-bottom:clamp(40px,5vw,64px)}
+@media (min-width:980px){.sec-head{grid-template-columns:1.2fr 1fr;align-items:end;column-gap:64px}.sec-head .eyebrow{grid-column:1/-1}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:999px;font-weight:500;font-size:1rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s ease,background-color .2s ease,border-color .2s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-blue{background:var(--blue);color:var(--ink)}
+.btn-blue:hover{background:#13adc1}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ghost{border-color:var(--line);background:var(--paper)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn .arr{transition:transform .2s ease}
+.btn:hover .arr{transform:translateX(3px)}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s ease}
+.top.scrolled{border-bottom-color:var(--line)}
+.top>.wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.brand b{font-size:1.4rem;font-weight:700;letter-spacing:-.04em}
+.brand b i{font-style:normal;color:var(--blue)}
+.brand span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;color:var(--mute)}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{text-decoration:none;font-size:.95rem;color:var(--ink-2)}
+.nav a:hover{color:var(--ink)}
+.top .btn{height:42px;padding:0 18px;font-size:.92rem}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--paper);cursor:pointer;align-items:center;justify-content:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:1.5px;background:var(--ink);position:relative;content:""}
+.menu-btn span::before{position:absolute;top:-6px}
+.menu-btn span::after{position:absolute;top:6px}
+.mobile-nav{border-top:1px solid var(--line);background:var(--paper)}
+.mobile-nav .wrap{display:grid;gap:4px;padding-block:12px 20px}
+.mobile-nav a{text-decoration:none;padding:12px 0;font-size:1.15rem;border-bottom:1px solid var(--line)}
+.mobile-nav .btn{margin-top:14px;justify-content:center}
+@media (max-width:900px){.nav{display:none}.top .cta-desk{display:none}.menu-btn{display:inline-flex}}
+
+/* Hero */
+.hero{padding-block:clamp(40px,7vw,96px) 0}
+.hero-meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.hero h1{font-size:clamp(3rem,9.6vw,9rem);line-height:.92;letter-spacing:-.055em;font-weight:600}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero-row{display:grid;gap:40px;margin-top:clamp(32px,4vw,56px)}
+@media (min-width:980px){.hero-row{grid-template-columns:1.1fr 1fr;column-gap:80px;align-items:start}}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.spec{border-top:1px solid var(--ink);font-variant-numeric:tabular-nums}
+.spec div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.spec dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.spec dd{margin:0;text-align:right;font-weight:500}
+.spec dd.big{font-size:1.6rem;letter-spacing:-.03em;line-height:1}
+.spec-note{font-family:var(--f-mono);font-size:.7rem;color:var(--mute);margin-top:10px;letter-spacing:.04em}
+
+/* Marquee */
+.reel{margin-top:clamp(48px,6vw,80px);overflow:hidden;padding-block:4px 8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.reel-track{display:flex;gap:16px;width:max-content;animation:reel 90s linear infinite}
+.reel:hover .reel-track,.reel:focus-within .reel-track{animation-play-state:paused}
+@keyframes reel{to{transform:translateX(-50%)}}
+.reel-item{width:clamp(250px,30vw,420px);flex:none;text-align:left;background:none;border:0;padding:0;cursor:pointer}
+.reel-item .ph{aspect-ratio:7/5;border-radius:var(--r-lg);overflow:hidden;background:var(--tint)}
+.reel-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.reel-item:hover img{transform:scale(1.035)}
+.reel-item .cap{display:flex;justify-content:space-between;gap:4px 12px;margin-top:12px;font-size:.95rem;flex-wrap:wrap}
+.reel-item .cap .mono{color:var(--mute);font-size:.68rem;padding-top:3px}
+@media (prefers-reduced-motion:reduce){.reel-track{animation:none}.reel{overflow-x:auto}}
+
+/* Clients */
+.clients{padding-block:clamp(56px,7vw,88px) 0}
+.clients-row{display:flex;flex-wrap:wrap;gap:12px 40px;align-items:baseline;margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+.clients-row span{font-size:clamp(1.15rem,2vw,1.6rem);letter-spacing:-.025em;font-weight:500;color:var(--ink-2)}
+
+/* Services bento */
+.bento{display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-areas:"ai ai proc proc" "ai ai soft web" "mob dec spat spat" "ux cloud hw hw"}
+.tile{position:relative;border-radius:var(--r-lg);background:var(--tint);padding:28px;display:flex;flex-direction:column;gap:14px;min-width:0;overflow:hidden}
+.tile h3{font-size:1.5rem;letter-spacing:-.03em;line-height:1.1}
+.tile p{color:var(--ink-2);font-size:.98rem;line-height:1.55}
+.tile .mono{color:var(--mute);font-size:.68rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.03em;padding:5px 9px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);white-space:nowrap}
+.seen{margin-top:auto;padding-top:14px;border-top:1px solid rgba(10,14,15,.1);display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.seen .mono{margin-right:2px}
+.seen button{background:none;border:0;padding:2px 0;cursor:pointer;font-size:.92rem;font-weight:500;text-decoration:underline;text-decoration-color:rgba(10,14,15,.25);text-underline-offset:4px}
+.seen button:hover{text-decoration-color:currentColor}
+.t-ai{grid-area:ai;background:var(--blue-wash)}
+.t-ai .shot{margin-top:6px;border-radius:var(--r-md);overflow:hidden;border:1px solid rgba(6,120,138,.15);background:var(--paper);aspect-ratio:16/9}
+.t-ai .shot img{width:100%;height:100%;object-fit:cover;object-position:left top}
+.t-ai h3{font-size:clamp(1.75rem,2.6vw,2.4rem)}
+.t-proc{grid-area:proc;background:var(--blue)}
+.t-proc p,.t-proc .mono{color:var(--ink)}
+.t-proc .chip{background:rgba(255,255,255,.85);border-color:transparent}
+.t-proc .seen{border-top-color:rgba(10,14,15,.2)}
+.t-soft{grid-area:soft}.t-web{grid-area:web}.t-mob{grid-area:mob}.t-dec{grid-area:dec}.t-ux{grid-area:ux}.t-cloud{grid-area:cloud}
+.t-spat{grid-area:spat;background:var(--night);color:#fff;min-height:340px}
+.t-spat video,.t-spat .vid-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75}
+.t-spat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,6,7,.15) 0%,rgba(4,6,7,.2) 40%,rgba(4,6,7,.92) 100%)}
+.t-spat>*:not(video){position:relative;z-index:1}
+.t-spat p{color:#d4dcde}
+.t-spat .mono{color:var(--blue)}
+.t-spat .chip{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#e6eced}
+.t-spat .seen{border-top-color:rgba(255,255,255,.18)}
+.t-spat .seen button{color:#fff;text-decoration-color:rgba(255,255,255,.35)}
+.t-hw{grid-area:hw;background:var(--paper);border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.t-hw .txt{display:flex;flex-direction:column;gap:14px;min-width:0}
+.t-hw .pic{border-radius:var(--r-md);background:var(--tint);overflow:hidden;min-height:220px}
+.t-hw .pic img{width:100%;height:100%;object-fit:contain;padding:10px}
+@media (max-width:1100px){.bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"ai ai" "proc proc" "soft web" "mob dec" "spat spat" "ux cloud" "hw hw"}}
+@media (max-width:640px){.bento{grid-template-columns:minmax(0,1fr);grid-template-areas:"ai" "proc" "soft" "web" "mob" "dec" "spat" "ux" "cloud" "hw"}.t-hw{grid-template-columns:1fr}.tile{padding:22px}}
+
+/* Approach */
+.approach{background:var(--tint)}
+.equation{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:16px;align-items:stretch}
+.term{background:var(--paper);border-radius:var(--r-lg);padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:220px}
+.term strong{font-size:clamp(2rem,3.6vw,3.25rem);letter-spacing:-.045em;line-height:1;font-weight:600}
+.term span{color:var(--ink-2);font-size:1.05rem}
+.term .mono{color:var(--blue-deep);font-size:.7rem}
+.plus{align-self:center;font-size:2.5rem;font-weight:300;color:var(--blue-deep);line-height:1}
+@media (max-width:860px){.equation{grid-template-columns:1fr}.plus{justify-self:center;font-size:2rem}}
+.why{margin-top:clamp(64px,8vw,112px);display:grid;gap:28px}
+@media (min-width:980px){.why{grid-template-columns:1fr 1.6fr;column-gap:64px;align-items:start}}
+.why h3{font-size:clamp(1.75rem,3vw,2.6rem);letter-spacing:-.035em;line-height:1.05}
+.stack-line{margin-top:18px;color:var(--ink-2)}
+.stack-line b{font-weight:600;color:var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;counter-reset:s}
+@media (max-width:640px){.steps{grid-template-columns:minmax(0,1fr)}}
+.step{background:var(--paper);border-radius:var(--r-lg);padding:26px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.step .n{font-family:var(--f-mono);font-size:.8rem;color:var(--blue-deep);letter-spacing:.06em}
+.step h4{margin:0;font-size:1.25rem;letter-spacing:-.02em;font-weight:600;line-height:1.2}
+.step ul{margin:0;padding:0;list-style:none;display:grid;gap:4px;color:var(--ink-2);font-size:.95rem}
+.step ul li::before{content:"– ";color:var(--mute)}
+.step .q{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-size:.95rem;font-weight:500}
+.step .q .mono{display:block;color:var(--mute);font-size:.64rem;margin-bottom:6px;font-weight:400}
+
+/* Work */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filter{height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:.92rem;display:inline-flex;gap:8px;align-items:center;transition:background-color .2s,border-color .2s,color .2s}
+.filter sup{font-family:var(--f-mono);font-size:.68rem;color:var(--mute);top:0}
+.filter:hover{border-color:var(--ink)}
+.filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.filter[aria-pressed="true"] sup{color:var(--blue)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 20px}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid{grid-template-columns:minmax(0,1fr);gap:36px}}
+.card{display:flex;flex-direction:column;gap:14px;background:none;border:0;padding:0;text-align:left;cursor:pointer;min-width:0}
+.card .ph{position:relative;aspect-ratio:4/3;border-radius:var(--r-lg);overflow:hidden;background:var(--tint)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.card .ph.blend img{object-fit:contain;padding:7%;mix-blend-mode:multiply}
+.card .ph.frame img{position:absolute;left:9%;top:11%;width:100%;height:100%;object-fit:cover;object-position:left top;border-radius:10px 0 0 0;box-shadow:0 18px 40px -18px rgba(4,6,7,.45),0 0 0 1px rgba(4,6,7,.06)}
+.card:hover .ph.frame img{transform:translate(-6px,-6px)}
+.card:hover .ph img{transform:scale(1.03)}
+.card .status{position:absolute;top:14px;left:14px;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;background:var(--paper);padding:6px 10px;border-radius:999px}
+.card .meta{display:flex;justify-content:space-between;gap:12px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.card .meta .d{color:var(--blue-deep)}
+.card h3{font-size:1.35rem;letter-spacing:-.025em;line-height:1.15}
+.card h3 .go{display:inline-block;margin-left:4px;color:var(--blue-deep);transition:transform .2s ease;font-weight:400}
+.card:hover h3 .go{transform:translate(2px,-2px)}
+.card p{color:var(--ink-2);font-size:.98rem;line-height:1.5}
+.blank{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:22px;background-color:var(--night);color:#fff;background-image:linear-gradient(rgba(26,190,211,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(26,190,211,.14) 1px,transparent 1px);background-size:28px 28px}
+.blank b{font-size:clamp(2rem,4vw,2.8rem);letter-spacing:-.04em;font-weight:600;line-height:1}
+.blank .mono{color:var(--blue);font-size:.7rem}
+
+/* Story band */
+.story{background:var(--night);color:#fff}
+.story .eyebrow{color:var(--night-mute)}
+.story .lead{color:#c9d2d4}
+.story .h2 em{font-style:normal;color:var(--blue)}
+.timeline{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:thin;scrollbar-color:var(--night-line) transparent}
+.tl{flex:0 0 clamp(240px,24vw,300px);scroll-snap-align:start;padding:0 28px 0 0;position:relative}
+.tl::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:var(--night-line)}
+.tl .dot{position:relative;width:19px;height:19px;border-radius:50%;border:1px solid var(--blue);background:var(--night);display:grid;place-items:center}
+.tl .dot::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue)}
+.tl .yr{font-family:var(--f-mono);color:var(--blue);font-size:.85rem;margin-top:22px;letter-spacing:.04em}
+.tl h4{margin:8px 0 6px;font-size:1.2rem;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.tl p{color:var(--night-mute);font-size:.93rem;line-height:1.5}
+.tl .where{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#b9c3c5;margin-top:8px}
+.story-pics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(48px,6vw,72px)}
+.story-pics button{border:0;padding:0;background:var(--night-2);border-radius:var(--r-md);overflow:hidden;aspect-ratio:3/4;cursor:pointer;position:relative}
+.story-pics img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:opacity .3s,transform .6s}
+.story-pics button:hover img{opacity:1;transform:scale(1.03)}
+.story-pics .lbl{position:absolute;left:12px;bottom:12px;right:12px;text-align:left;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(4,6,7,.75);padding:6px 8px;border-radius:8px;color:#fff}
+@media (max-width:700px){.story-pics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Recognition */
+.rec{display:grid;gap:40px}
+@media (min-width:1000px){.rec{grid-template-columns:1.25fr 1fr;column-gap:64px}}
+.awards{border-top:1px solid var(--ink)}
+.award{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.award .y{font-family:var(--f-mono);font-size:.82rem;color:var(--blue-deep);font-variant-numeric:tabular-nums}
+.award b{display:block;font-size:1.15rem;font-weight:600;letter-spacing:-.02em;line-height:1.3}
+.award span{color:var(--mute);font-size:.93rem}
+.rec-pics{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start}
+.rec-pics figure{margin:0;display:grid;gap:8px}
+.rec-pics figure:first-child{grid-column:1/-1}
+.rec-pics .ph{border-radius:var(--r-md);overflow:hidden;background:var(--tint);aspect-ratio:4/3}
+.rec-pics figure:first-child .ph{aspect-ratio:16/10}
+.rec-pics img{width:100%;height:100%;object-fit:cover}
+.rec-pics figcaption{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.press{margin-top:clamp(56px,7vw,88px);display:grid;gap:22px}
+.press-row{display:flex;flex-wrap:wrap;gap:10px 34px;align-items:baseline;padding-top:22px;border-top:1px solid var(--line)}
+.press-row span{font-size:clamp(1.15rem,2vw,1.55rem);font-weight:500;letter-spacing:-.025em;color:var(--ink-2)}
+.press-row.small span{font-size:1rem;color:var(--mute);font-weight:500;letter-spacing:-.01em}
+
+/* Team */
+.founder{display:grid;gap:32px;align-items:start}
+@media (min-width:900px){.founder{grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);column-gap:64px}}
+.founder .ph{border-radius:var(--r-lg);overflow:hidden;background:var(--tint);aspect-ratio:1/1}
+.founder .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.founder h3{font-size:clamp(2rem,3.4vw,3rem);letter-spacing:-.04em;line-height:1}
+.founder .role{margin-top:10px;color:var(--blue-deep)}
+.creds{margin:28px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.creds li{padding:13px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:baseline}
+.creds li::before{content:"";width:6px;height:6px;border-radius:1px;background:var(--blue);flex:none;transform:translateY(-2px)}
+.teach{margin-top:22px;color:var(--ink-2);font-size:.98rem}
+.teach a{color:var(--blue-deep)}
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:clamp(48px,6vw,72px)}
+.member .av .ini{display:grid;place-items:center;width:100%;height:100%;background:var(--blue-wash);color:var(--blue-deep);font-weight:600;font-size:1.05rem;letter-spacing:-.02em}
+@media (max-width:1100px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.team{grid-template-columns:minmax(0,1fr)}}
+.member{display:flex;gap:16px;align-items:center;padding:16px;border-radius:var(--r-md);background:var(--tint);min-width:0}
+.member .av{width:60px;height:60px;border-radius:50%;overflow:hidden;flex:none;background:var(--line)}
+.member .av img{width:100%;height:100%;object-fit:cover;transform:scale(1.1)}
+.member b{display:block;font-weight:600;letter-spacing:-.01em}
+.member span{display:block;color:var(--mute);font-size:.9rem;line-height:1.35}
+
+/* Contact */
+.contact{background:var(--blue);color:var(--ink)}
+.contact .eyebrow{color:var(--ink)}
+.contact .eyebrow::before{background:var(--ink)}
+.contact-grid{display:grid;gap:40px}
+@media (min-width:1000px){.contact-grid{grid-template-columns:1fr 1.1fr;column-gap:64px;align-items:start}}
+.contact .h2{font-size:clamp(2.5rem,6vw,5.25rem);letter-spacing:-.05em}
+.contact .lead{color:var(--ink);margin-top:22px}
+.direct{margin-top:36px;border-top:1px solid rgba(10,14,15,.35)}
+.direct div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(10,14,15,.2);flex-wrap:wrap}
+.direct dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.direct dd{margin:0;font-weight:500;user-select:all}
+.direct dd a{user-select:auto}
+.todo{display:inline-block;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.02em;padding:3px 10px;border:1px dashed rgba(10,14,15,.55);border-radius:8px;user-select:none;font-weight:400}
+.form{background:var(--paper);border-radius:var(--r-lg);padding:clamp(22px,3vw,36px);display:grid;gap:18px;box-shadow:0 30px 60px -30px rgba(4,6,7,.35)}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.form .two{grid-template-columns:1fr}}
+.field{display:grid;gap:7px;min-width:0}
+.field>label,.field legend{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding:0}
+.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:13px 14px;font:inherit;font-size:1rem;background:var(--paper);color:var(--ink);transition:border-color .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--blue-deep);box-shadow:0 0 0 3px var(--blue-wash)}
+.field textarea{min-height:120px;resize:vertical}
+fieldset.field{border:0;margin:0;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;inset:0;opacity:0;pointer-events:none;margin:0}
+.opt span{display:inline-flex;align-items:center;height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);cursor:pointer;font-size:.92rem;transition:all .15s;user-select:none}
+.opt input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.opt input:focus-visible+span{outline:2px solid var(--blue-deep);outline-offset:2px}
+.form .err{color:#b42318;font-size:.9rem}
+.form .btn{justify-content:center}
+.sent{display:grid;gap:14px}
+.sent h3{font-size:1.5rem;letter-spacing:-.03em}
+.sent pre{margin:0;white-space:pre-wrap;font-family:var(--f-mono);font-size:.8rem;line-height:1.6;background:var(--tint);border-radius:12px;padding:16px;max-height:260px;overflow:auto}
+.sent .row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Footer */
+.foot{padding-block:56px 40px;border-top:1px solid var(--line)}
+.foot-grid{display:grid;gap:32px}
+@media (min-width:860px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr}}
+.foot h5{margin:0 0 12px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:400}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a{text-decoration:none;color:var(--ink-2)}
+.foot a:hover{color:var(--ink)}
+.foot p{color:var(--ink-2);max-width:30rem;margin-top:12px}
+.foot .base{margin-top:48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+
+/* Case-study dialog */
+dialog.case{overflow:auto;overscroll-behavior:contain;border:0;padding:0;border-radius:var(--r-lg);width:min(1080px,calc(100% - 24px));max-height:calc(100dvh - 32px);background:var(--paper);color:var(--ink);box-shadow:0 40px 120px -20px rgba(4,6,7,.45)}
+dialog.case::backdrop{background:rgba(4,6,7,.55);backdrop-filter:blur(4px)}
+.case-in{display:flex;flex-direction:column}
+.case-bar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px 14px 24px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.case-bar .mono{color:var(--mute);font-size:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.case-bar .ctl{display:flex;gap:6px}
+.icon-btn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--paper);cursor:pointer;display:grid;place-items:center;font-size:1.05rem;line-height:1}
+.icon-btn:hover{border-color:var(--ink)}
+.case-media{position:relative;background:var(--tint);height:min(56vh,560px);overflow:hidden}
+.case-media>img,.case-media>video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:16px}
+@media (max-width:600px){.case-media{height:min(42vh,320px)}.case-media>img,.case-media>video{padding:8px}}
+.thumbs{display:flex;gap:8px;padding:12px 24px 0;overflow-x:auto}
+.thumbs button{flex:none;width:84px;height:60px;border-radius:10px;overflow:hidden;border:2px solid transparent;padding:0;background:var(--tint);cursor:pointer}
+.thumbs button[aria-current="true"]{border-color:var(--blue)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.case-body{display:grid;gap:32px;padding:28px 24px 32px}
+@media (min-width:860px){.case-body{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);column-gap:48px;padding:36px 40px 40px}}
+.case-body h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.045em;line-height:1}
+.case-body .tagline{margin-top:14px;font-size:1.15rem;color:var(--ink-2);line-height:1.5}
+.case-sec{margin-top:28px}
+.case-sec h4{margin:0 0 10px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-deep);font-weight:500}
+.case-sec p{color:var(--ink-2)}
+.case-sec ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.case-sec li{padding-left:18px;position:relative;color:var(--ink-2);line-height:1.5}
+.case-sec li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:1px;background:var(--blue)}
+.case-sec li b{color:var(--ink);font-weight:600}
+.case-aside{display:grid;gap:0;align-content:start;border-top:1px solid var(--ink)}
+.case-aside div{padding:13px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.case-aside dt{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.case-aside dd{margin:0;font-weight:500}
+.case-aside .chips{margin-top:4px}
+.case-aside .btn{margin-top:22px;justify-content:center}
+</style>
+
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#hero" aria-label="dVerse Technologies, back to top"><b>d<i>V</i>erse</b><span>TECHNOLOGIES</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#team">Team</a>
+    </nav>
+    <a class="btn btn-ink cta-desk" href="#contact">Book a consultation <span class="arr" aria-hidden="true">→</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu"><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <div class="wrap">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#team">Team</a>
+      <a class="btn btn-blue" href="#contact">Book a consultation</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero-meta">
+        <span class="eyebrow">AI &amp; product engineering</span>
+        <span class="mono" style="color:var(--mute)">Chennai, India</span>
+      </div>
+      <h1>We build things<br>that <em>work.</em></h1>
+      <div class="hero-row">
+        <div>
+          <p class="lead">dVerse Technologies is an AI and product engineering company. We design and build AI automation, software, web platforms and physical products for manufacturers, hospitals, city infrastructure, education and government.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-blue" href="#contact">Book a consultation <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="#work">See the work</a>
+          </div>
+        </div>
+        <div>
+          <dl class="spec">
+            <div><dt>Projects shipped</dt><dd class="big">20+</dd></div>
+            <div><dt>Industries served</dt><dd class="big">12+</dd></div>
+            <div><dt>Practice</dt><dd>AI · Software · Product Design · Hardware</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="reel" aria-label="Project reel">
+      <div class="reel-track" id="reel"></div>
+    </div>
+  </section>
+
+  <section class="clients" aria-labelledby="clientsLbl">
+    <div class="wrap">
+      <span class="eyebrow" id="clientsLbl">Clients &amp; collaborators</span>
+      <div class="clients-row">
+        <span>Jaipur Rugs</span>
+        <span>Government of Tamil Nadu</span>
+        <span>Cancer Institute (WIA)</span>
+        <span>Witmer</span>
+        <span>QBlue</span>
+        <span>Luna Park &amp; Resort</span>
+        <span>Smith Garden Farmhouse</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Consulting domains</span>
+        <h2 class="h2">Where we can help</h2>
+        <p class="lead">Each domain below is backed by work we have shipped. Open a project to see what we built and how.</p>
+      </div>
+      <div class="bento">
+        <article class="tile t-ai">
+          <span class="mono">AI automation</span>
+          <h3>Automate your boring tasks.</h3>
+          <p>AI tools built around your company's own context: retrieval over your documents, multi-step LLM workflows and domain tools that take repetitive work off your team.</p>
+          <div class="chips"><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">RAG</span><span class="chip">FAISS</span><span class="chip">ChromaDB</span></div>
+          <div class="shot"><img src="img/jr-knots.webp" alt="Knot mapping screen of the AI Design Studio built for Jaipur Rugs, matching design colours to yarn in stock" loading="lazy"></div>
+          <div class="seen"><span class="mono">Seen in</span><button data-open="ai-design-studio">AI Design Studio</button><button data-open="fikalearn">FikaLearn</button><button data-open="career">AI Career Recommendation</button></div>
+        </article>
+        <article class="tile t-proc">
+          <span class="mono">Process automation</span>
+          <h3>Busywork that runs itself</h3>
+          <p>Payments, shipping, customer messages and reports wired into one workflow, so Ops, Support and Finance work from the same numbers.</p>
+          <div class="chips"><span class="chip">Razorpay</span><span class="chip">Shiprocket</span><span class="chip">WhatsApp API</span><span class="chip">Notion API</span><span class="chip">Python</span></div>
+          <div class="seen"><span class="mono">Seen in</span><button data-open="orders">E-commerce Order Management</button></div>
+        </article>
+        <article class="tile t-soft">
+          <span class="mono">Software development</span>
+          <h3>Platforms &amp; dashboards</h3>
+          <p>Real-time dashboards, learning platforms and back offices with auth, integrations and clean data.</p>
+          <div class="chips"><span class="chip">Next.js</span><span class="chip">Node.js</span><span class="chip">PostgreSQL</span></div>
+          <div class="seen"><span class="mono">Seen in</span><button data-open="ccms">Street Light CCMS</button><button data-open="meraki">Meraki</button></div>
+        </article>
+        <article class="tile t-web">
+          <span class="mono">Web development</span>
+          <h3>Websites that convert</h3>
+          <p>Image-led, responsive sites built to turn visitors into enquiries.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">Next.js</span></div>
+          <div class="seen"><span class="mono">Seen in</span><button data-open="lunapark">Luna Park</button><button data-open="smithgarden">Smith Garden</button></div>
+        </article>
+        <article class="tile t-mob">
+          <span class="mono">Mobile apps</span>
+          <h3>iOS &amp; Android</h3>
+          <p>Apps with conversational AI, menu scanning and community data built in.</p>
+          <div class="chips"><span class="chip">Flutter</span><span class="chip">React Native</span></div>
+          <div class="seen"><span class="mono">Seen in</span><button data-open="veganfinds">VeganFinds</button><button data-open="fikalearn">FikaLearn</button></div>
+        </article>
+        <article class="tile t-dec">
+          <span class="mono">Decision intelligence</span>
+          <h3>A company brain</h3>
+          <p>Task prioritisation, blocker tracking, semantic file search and compliant on-prem BI.</p>
+          <div class="seen"><span class="mono">Seen in</span><button data-open="flowinsight">FlowInsight</button></div>
+        </article>
+        <article class="tile t-spat">
+          <video autoplay muted loop playsinline preload="metadata" poster="img/splat-mapping.webp" aria-hidden="true"><source src="img/splat-mapping.mp4" type="video/mp4"></video>
+          <span class="mono">Spatial intelligence &amp; simulation</span>
+          <h3>AI that understands its surroundings</h3>
+          <p>Real-time mapping with Gaussian splats and SLAM, drone autonomy, companion AI and training simulators.</p>
+          <div class="chips"><span class="chip">SLAM</span><span class="chip">Gaussian splatting</span><span class="chip">Simulation</span></div>
+          <div class="seen"><span class="mono">Seen in</span><button data-open="mapping">Real-time Mapping</button><button data-open="drones">Level 2 Autonomy Drones</button><button data-open="dronesim">DroneSim</button><button data-open="witmer">Companion AI</button></div>
+        </article>
+        <article class="tile t-ux">
+          <span class="mono">UI/UX &amp; 3D</span>
+          <h3>Interfaces people trust</h3>
+          <p>Research-led product design, WCAG 2.1 AA accessibility and real-time 3D configurators.</p>
+          <div class="seen"><span class="mono">Seen in</span><button data-open="beyou">Be.You</button><button data-open="saath">Saath</button></div>
+        </article>
+        <article class="tile t-cloud">
+          <span class="mono">Cloud &amp; e-commerce</span>
+          <h3>Infrastructure &amp; storefronts</h3>
+          <p>Cloud deployments with CI/CD, plus storefronts tied to payments and inventory.</p>
+          <div class="chips"><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Shopify</span></div>
+          <div class="seen"><span class="mono">Seen in</span><button data-open="orders">Order Management</button></div>
+        </article>
+        <article class="tile t-hw">
+          <div class="txt">
+            <span class="mono">Product &amp; hardware engineering</span>
+            <h3>From sketch to working device</h3>
+            <p>Industrial design, embedded systems, IoT and rapid prototyping. Our devices have won the James Dyson Award, an iF Design Award and a Boeing national award.</p>
+            <div class="chips"><span class="chip">Industrial design</span><span class="chip">Embedded</span><span class="chip">IoT</span><span class="chip">3D printing</span></div>
+            <div class="seen"><span class="mono">Seen in</span><button data-open="uvfy">UVfy</button><button data-open="curio">CuriO</button><button data-open="excelscope">Excelscope</button></div>
+          </div>
+          <div class="pic"><img src="img/excelscope-exploded.webp" alt="Exploded view of the Excelscope 2.0 malaria diagnosis device" loading="lazy"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section approach" id="approach">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">How we think about AI</span>
+        <h2 class="h2">AI is more than chatbots.</h2>
+        <p class="lead">Useful AI in a business combines three things. We design all three together, around the way your team already works.</p>
+      </div>
+      <div class="equation">
+        <div class="term"><span class="mono">Reasoning</span><div><strong>AI</strong><br><span>for decision making</span></div></div>
+        <div class="plus" aria-hidden="true">+</div>
+        <div class="term"><span class="mono">Context</span><div><strong>Company brain</strong><br><span>your data, your documents, your rules</span></div></div>
+        <div class="plus" aria-hidden="true">+</div>
+        <div class="term"><span class="mono">Action</span><div><strong>Automation</strong><br><span>for repetitive tasks</span></div></div>
+      </div>
+
+      <div class="why">
+        <div>
+          <h3>If you can build your own tools, why AI engineers?</h3>
+          <p class="stack-line">Today anyone can <b>generate code</b> on a laptop, <b>host</b> it on Vercel, <b>store data</b> in Supabase and <b>collect payments</b> with Razorpay. The hard questions start when a whole company depends on the tool. That is the part we engineer.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <span class="n">01</span>
+            <h4>Find the most time-consuming, repetitive task</h4>
+            <ul><li>Start from your domain knowledge</li></ul>
+            <p class="q"><span class="mono">What we engineer for</span>You are the expert here. We listen first.</p>
+          </div>
+          <div class="step">
+            <span class="n">02</span>
+            <h4>Engineer the prompt</h4>
+            <ul><li>Imagine the outcomes</li><li>Think and validate in steps</li></ul>
+            <p class="q"><span class="mono">What we engineer for</span>How does the tool stay compliant with your business standards?</p>
+          </div>
+          <div class="step">
+            <span class="n">03</span>
+            <h4>Design the system architecture</h4>
+            <ul><li>How does AI get your context?</li><li>How should every system talk to the others?</li></ul>
+            <p class="q"><span class="mono">What we engineer for</span>Which systems work best together?</p>
+          </div>
+          <div class="step">
+            <span class="n">04</span>
+            <h4>Deploy</h4>
+            <ul><li>Connect your database</li><li>Host and connect your domain</li></ul>
+            <p class="q"><span class="mono">What we engineer for</span>Will it still work when every employee and client uses it? How should operating cost be optimised?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Selected work</span>
+        <h2 class="h2">From rug looms to street lights</h2>
+        <p class="lead" id="workLead">Projects across AI, software, spatial computing and hardware. Filter by domain, or open any project for the full case study.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects by domain" id="filters"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="section story" id="story">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Phygital</span>
+        <h2 class="h2">It all started with physical&nbsp;+&nbsp;digital systems.</h2>
+        <p class="lead">We started out building devices for farms, clinics and field teams. The same team now builds the AI and software that runs around them.</p>
+      </div>
+      <div class="timeline" id="timeline" tabindex="0" aria-label="Timeline of hardware projects, scrolls sideways"></div>
+      <div class="story-pics" id="storyPics"></div>
+    </div>
+  </section>
+
+  <section class="section" id="recognition">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Recognition</span>
+        <h2 class="h2">Awards &amp; press</h2>
+        <p class="lead">Our product work has been recognised by design juries, industry and government in India and abroad.</p>
+      </div>
+      <div class="rec">
+        <div class="awards">
+          <div class="award"><span class="y">2024</span><div><b>Boeing Award, National Winner</b><span>CuriO, refreshable tactile display</span></div></div>
+          <div class="award"><span class="y">2023</span><div><b>Startup TN Award</b><span>Presented by the Hon'ble Chief Minister of Tamil Nadu, for CuriO</span></div></div>
+          <div class="award"><span class="y">2020</span><div><b>iF Design Award</b><span>Excelscope 2.0, medical device</span></div></div>
+          <div class="award"><span class="y">2018</span><div><b>James Dyson Award, International Title Winner</b><span>Excelscope, low-cost automated malaria diagnosis</span></div></div>
+          <div class="award"><span class="y">2017</span><div><b>3M Young Innovator Award</b><span>Social Transformation category, for dHive</span></div></div>
+          <div class="award"><span class="y">2025</span><div><b>Featured in SPAN Magazine</b><span>Published by the US Embassy in India, on CuriO</span></div></div>
+          <div class="award"><span class="y">2021</span><div><b>Digit, plus local print and TV news</b><span>Coverage of UVfy autonomous disinfection</span></div></div>
+        </div>
+        <div class="rec-pics">
+          <figure><div class="ph"><img src="img/award-dyson.webp" alt="The Excelscope team holding the device after the James Dyson Award" loading="lazy"></div><figcaption>James Dyson Award · Excelscope</figcaption></figure>
+          <figure><div class="ph"><img src="img/award-stn.webp" alt="Receiving the Startup TN Award from the Chief Minister of Tamil Nadu" loading="lazy"></div><figcaption>Startup TN Award · 2023</figcaption></figure>
+          <figure><div class="ph"><img src="img/award-boeing.webp" alt="Times Techies article: Meet winners of Boeing's startup grant" loading="lazy" style="object-position:50% 15%"></div><figcaption>Boeing · Times Techies</figcaption></figure>
+        </div>
+      </div>
+      <div class="press">
+        <span class="eyebrow">Featured by</span>
+        <div class="press-row"><span>BBC Radio</span><span>The Guardian</span><span>Nature Research</span><span>TU Delft</span><span>Philips Innovation</span><span>The Better India</span><span>James Dyson Award</span></div>
+        <span class="eyebrow" style="margin-top:18px">CuriO is supported by</span>
+        <div class="press-row small"><span>Healthcare Technology Innovation Centre</span><span>IITM Incubation Cell</span><span>Digital Impact Square (TCS Foundation)</span><span>BIRAC</span><span>NIDHI PRAYAS</span><span>StartupTN</span><span>Prosus</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="team" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Team</span>
+        <h2 class="h2">A small, senior team that designs, builds and ships</h2>
+      </div>
+      <div class="founder">
+        <div class="ph"><img src="img/krishna.webp" alt="Krishna Thiruvengadam" loading="lazy"></div>
+        <div>
+          <h3>Krishna Thiruvengadam</h3>
+          <p class="role mono">Founder &amp; CEO · Product designer</p>
+          <ul class="creds">
+            <li>Inventor and industrial designer, Masters in Product Design</li>
+            <li>Visiting faculty of design, NID Ahmedabad</li>
+            <li>Creator of award-winning rural makerspaces</li>
+            <li>Youth for India Fellow</li>
+            <li>MIT Innovation Bootcamper</li>
+          </ul>
+          <p class="teach">Krishna also teaches product and systems thinking, with workshops for NID Ahmedabad, the IIT Madras PALS initiative and Teach for India. <a href="https://www.krishnathiruvengadam.com" target="_blank" rel="noopener">krishnathiruvengadam.com ↗</a></p>
+        </div>
+      </div>
+      <div class="team" id="teamGrid"></div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Book a consultation</span>
+        <h2 class="h2" style="margin-top:22px">Let's build something that works.</h2>
+        <p class="lead">Tell us what you want to automate, build or fix. We get back to you within one business day.</p>
+        <dl class="direct" id="direct"></dl>
+      </div>
+      <form class="form" id="form" novalidate>
+        <div id="formFields" style="display:grid;gap:18px">
+          <div class="two">
+            <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
+          </div>
+          <div class="two">
+            <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="f-phone">Phone (optional)</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <fieldset class="field">
+            <legend>What do you need?</legend>
+            <div class="opts" id="opts"></div>
+          </fieldset>
+          <div class="field"><label for="f-msg">About the project</label><textarea id="f-msg" name="message" placeholder="The problem, who it is for, and any timeline you are working to." required></textarea></div>
+          <p class="err" id="err" hidden></p>
+          <button class="btn btn-ink" type="submit">Prepare enquiry <span class="arr" aria-hidden="true">→</span></button>
+        </div>
+        <div class="sent" id="sent" hidden>
+          <span class="eyebrow">Enquiry ready</span>
+          <h3>Send this to our team</h3>
+          <p id="sendTo"></p>
+          <pre id="summary"></pre>
+          <div class="row">
+            <button class="btn btn-blue" type="button" id="copyBtn">Copy enquiry</button>
+            <a class="btn btn-ghost" id="mailBtn" href="#">Open in email app</a>
+            <button class="btn btn-ghost" type="button" id="editBtn">Edit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#hero"><b>d<i>V</i>erse</b><span>TECHNOLOGIES</span></a>
+        <p>dVerse Technologies Pvt Ltd is an AI and product engineering company in Chennai, India.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">AI automation</a></li>
+          <li><a href="#services">Process automation</a></li>
+          <li><a href="#services">Software &amp; web development</a></li>
+          <li><a href="#services">Spatial intelligence</a></li>
+          <li><a href="#services">Product &amp; hardware engineering</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:krishna@dverselabs.com">krishna@dverselabs.com</a></li>
+          <li style="color:var(--ink-2)">Chennai, India</li>
+          <li><a href="https://www.krishnathiruvengadam.com" target="_blank" rel="noopener">Founder ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="base"><span>© 2026 dVerse Technologies Pvt Ltd</span><span>Chennai, India</span></div>
+  </div>
+</footer>
+
+<dialog class="case" id="case" aria-labelledby="caseTitle">
+  <div class="case-in">
+    <div class="case-bar">
+      <span class="mono" id="caseCrumb"></span>
+      <div class="ctl">
+        <button class="icon-btn" id="casePrev" aria-label="Previous project">←</button>
+        <button class="icon-btn" id="caseNext" aria-label="Next project">→</button>
+        <button class="icon-btn" id="caseClose" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <div class="case-media" id="caseMedia"></div>
+    <div class="thumbs" id="caseThumbs"></div>
+    <div class="case-body">
+      <div>
+        <h2 id="caseTitle"></h2>
+        <p class="tagline" id="caseTag"></p>
+        <div id="caseSecs"></div>
+      </div>
+      <aside>
+        <dl class="case-aside" id="caseAside"></dl>
+        <a class="btn btn-blue" href="#contact" id="caseCta" style="width:100%">Discuss a similar project <span class="arr" aria-hidden="true">→</span></a>
+      </aside>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ---------- Edit these before going live ---------- */
+const CONFIG = {
+  email: "krishna@dverselabs.com",
+  location: "Chennai, India"
+};
+
+const CATS = {
+  ai: "AI & Automation",
+  software: "Software & Web",
+  spatial: "Spatial & Simulation",
+  hardware: "Hardware & IoT"
+};
+
+const P = [
+  { id:"ai-design-studio", cat:"ai", title:"AI Design Studio", client:"Jaipur Rugs",
+    line:"Carpet designs resized, knot-mapped and colour-matched to yarn that is actually in stock.",
+    img:["jr-knots","jr-studio","jr-library","jr-grid"], fit:"contain",
+    tagline:"An AI design studio for the design and development team at Jaipur Rugs, built to maximise artist output.",
+    secs:[
+      {h:"What it does", p:"A design moves through one guided workflow instead of a chain of manual steps between artists, mapping and production."},
+      {h:"The workflow", list:[
+        "<b>New design</b>: upload a carpet design as JPG, PNG or BMP",
+        "<b>Knot mapping</b>: the design rendered as a knot-by-knot grid",
+        "<b>Resize & reference</b>: rescale a design between sizes, for example 8′×10′ to 9′×12′, at a set quality in knots per inch",
+        "<b>Colour matching</b>: every design colour matched to the nearest in-stock yarn, so a design only uses materials the company has",
+        "<b>Mapping and completion</b>: finished designs tracked through to done"]}
+    ], tags:["AI","Design automation","Inventory-aware","Web app"] },
+
+  { id:"flowinsight", cat:"ai", title:"FlowInsight", client:"dVerse product",
+    line:"Decision intelligence that tells each person what to do today, and why.",
+    img:["flowinsight","flowax"], fit:"cover",
+    tagline:"AI-powered work intelligence that reads everything your team is working on and turns it into a short, ordered focus list for each person.",
+    secs:[
+      {h:"Built for decisions", list:["A company-wide decision partner","Task prioritisation and blocker tracking","Semantic file search across your organisation","Compliant, on-prem business intelligence"]},
+      {h:"How it works", list:["<b>Connect your tools</b>: Jira, Slack, Linear, Notion, GitHub and Drive, with no migration","<b>Set your goal</b>: a launch, a sprint or a quarterly target, in plain language","<b>Get your focus list</b>: the tasks that move the needle now, each with its reasoning"]},
+      {h:"Private by default", p:"Shared intelligence is built directly across your team's own devices, encrypted and peer-to-peer, with no central server and no data leaving your network."}
+    ], tags:["AI","Work intelligence","Desktop app","On-prem"] },
+
+  { id:"fikalearn", cat:"ai", title:"FikaLearn AI Tutor", client:"dVerse product",
+    line:"A patient tutor on every student's phone, available at 2am.",
+    img:["fikalearn"], fit:"contain",
+    tagline:"A conversational AI tutor that explains any concept in plain language, answers follow-ups and sets practice on demand.",
+    secs:[
+      {h:"Key features", list:["Conversational AI that responds to follow-up questions","Explain and paraphrase textbook jargon","Timed mock exams with instant feedback","Pay-as-you-go, so learners pay only for what they use","Progress tracking"]},
+      {h:"Under the hood", list:["Retrieval-grounded answers: textbook content indexed with FAISS and ChromaDB so replies stay on-syllabus","Orchestrated with LangChain and LangGraph for multi-step reasoning","Flutter app on a Flask and Next.js backend, deployed on AWS"]}
+    ], tags:["EdTech","Conversational AI","RAG","Flutter","AWS"] },
+
+  { id:"career", cat:"ai", title:"AI Career Recommendation System", client:"Government of Tamil Nadu",
+    line:"Ranked, explained college-and-course matches for every student, in English and Tamil.",
+    img:["career"], fit:"contain",
+    tagline:"Turns a student's marks, interests and preferences into ranked, fully explained college-and-course matches, each with a compatibility score.",
+    secs:[
+      {h:"How it decides", list:["<b>Contextual psychometry</b>: preferences and aptitude weighted by importance, not swayed by hype or misinformation","<b>Suggestive combinations</b>: the top 10 college-and-course combinations, not one take-it-or-leave-it answer","<b>Explainable AI</b>: every suggestion comes with the data points and analysis behind it","<b>Preference-first</b>: the student's own preferences lead the ranking"]},
+      {h:"Built for", p:"State education departments, colleges and counsellors who need to give every student personalised, defensible guidance at scale."}
+    ], tags:["Explainable AI","Recommendation","Public sector","Web app"] },
+
+  { id:"orders", cat:"ai", title:"E-commerce Order Management", client:"Process automation",
+    line:"Payments, shipping, customer updates and reporting, automated and in sync.",
+    img:["orders"], fit:"contain",
+    tagline:"An order-management system that wires payments, shipping, customer updates and reporting into one workflow, so every team sees the same picture.",
+    secs:[
+      {h:"What we automated", list:["<b>Payments</b>: Razorpay integration for daily payment tracking, settlements and reconciliation reports","<b>Shipping</b>: Shiprocket API to create deliveries, track shipments and sync status","<b>Customer updates</b>: WhatsApp Business API sends order updates automatically","<b>Reporting</b>: scheduled jobs generate daily sheets and vendor reports","<b>Records</b>: Notion API pushes order details, logs and summaries into structured databases"]},
+      {h:"Built with", p:"A Python and Flask backend on PostgreSQL, integrated with a WordPress storefront and connected to Razorpay, Shiprocket, Delhivery, WhatsApp, Slack and Notion."}
+    ], tags:["Process automation","Razorpay","Shiprocket","WhatsApp API","Python"] },
+
+  { id:"beyou", cat:"software", title:"Be.You 3D Configurator", client:"Cancer Institute (WIA)",
+    line:"Made-to-fit bras designed in live 3D, including post-mastectomy designs for breast cancer survivors.",
+    img:["beyou","lumea"], fit:"cover",
+    tagline:"A real-time configurator that lets customers design, customise and see the right fit in interactive 3D before they check out. Presented in our decks as Lúmea.",
+    secs:[
+      {h:"Key features", list:["Live 3D preview","Guided fit and sizing","Full customisation: cup, band, strap, fabric and colour","Style presets: everyday, sport, nursing and post-surgical","Mastectomy and prosthetic-ready","Save, compare and share designs","Secure checkout with GST-compliant pricing"]},
+      {h:"Why it matters", p:"Most people wear the wrong size, and photos can't show fit. Seeing the product before buying cuts returns and raises confidence."}
+    ], tags:["E-commerce","3D configurator","React","Three.js","Healthcare"] },
+
+  { id:"ccms", cat:"software", title:"Smart Street Light CCMS", client:"Smart infrastructure",
+    line:"A city's street lights on one screen: live status, remote switching, energy and complaints.",
+    img:["ccms"], fit:"contain",
+    tagline:"A CCMS dashboard that gives a city live control over every street light.",
+    secs:[
+      {h:"Key capabilities", list:["<b>Real-time CCMS integration</b> with 30-second auto-sync","<b>Remote ON/OFF control</b> from the dashboard, no field visit needed","<b>Energy analytics</b> to cut waste and verify billing","<b>Complaint management</b> to log, track and resolve faults in one place"]},
+      {h:"Built with", p:"A Next.js front end and Node.js backend over a SQL database, with TanStack handling data fetching and table state for the real-time dashboard."}
+    ], tags:["Smart infrastructure","Next.js","Node.js","TanStack"] },
+
+  { id:"meraki", cat:"software", title:"Meraki Coding Platform", client:"Meraki",
+    line:"Structured programming education for underserved communities, now supporting 9,000+ active students.",
+    img:["meraki"], fit:"contain",
+    tagline:"A learning platform bringing affordable, structured programming education and real mentorship to underserved communities across India.",
+    secs:[
+      {h:"What we built", list:["Core learning modules","Per-module progress tracking for learners and mentors","Performance dashboards for performance, attendance and submissions","Google Calendar integration for classes and mentor sessions","Authentication, onboarding and course management"]},
+      {h:"Proof it works", p:"Meraki supports 9,000+ active students across India through 9+ partners, with regular mentor sessions led by industry engineers."},
+      {h:"Built with", p:"React.js and Material UI on a Python and PostgreSQL backend, with Google Calendar and Notion API integrations."}
+    ], tags:["EdTech","React.js","Python","PostgreSQL"] },
+
+  { id:"saath", cat:"software", title:"Saath Forum", client:"Accessibility",
+    line:"A forum-first accessibility community for India, built to WCAG 2.1 AA from the first line.",
+    img:["saath"], fit:"cover",
+    tagline:"A platform where people with disabilities, their families and caregivers find verified, India-specific access answers.",
+    secs:[
+      {h:"What we built", p:"A forum-first community where lived experience is primary knowledge. An AI assistant steps in only when the community hasn't, and only with verified context."},
+      {h:"Highlights", list:["Built to WCAG 2.1 AA: accessibility as the spec, not a retrofit","Hybrid community and AI model that keeps human knowledge primary","India-first recommendations by state, language and budget","No paid placement"]}
+    ], tags:["Community platform","Accessibility","AI assistant","Next.js"] },
+
+  { id:"veganfinds", cat:"software", title:"VeganFinds", client:"Food-tech",
+    line:"Finds the vegan dishes hiding in mainstream restaurant menus, with a community TrustScore.",
+    img:["veganfinds"], fit:"contain",
+    tagline:"Open the app, see the eateries around you, and get a clean menu of only what you can eat, each dish scored for trust.",
+    secs:[
+      {h:"How the TrustScore works", list:["<b>Rule engine</b>: 20 years of lived vegan knowledge, encoded","<b>Expert verification</b>: the team and trusted vegans cross-check dishes","<b>Community feedback</b>: users confirm what was truly vegan"]},
+      {h:"Key features", list:["Nearby eateries with only vegan and adaptable dishes","Exact customisations to ask for, in the local language","AI menu scanner for places with no data yet"]}
+    ], tags:["Mobile app","Food-tech","AI","Community"] },
+
+  { id:"lunapark", cat:"software", title:"Luna Park & Resort", client:"Hospitality",
+    line:"A boutique-resort website that turns atmosphere into enquiries.",
+    img:["lunapark"], fit:"cover",
+    tagline:"Image-led storytelling, a 4.9★ social-proof spine and one-tap call and WhatsApp reservations.",
+    secs:[{h:"What we built", list:["Image-led storytelling","Guest reviews woven through the page","One-tap call and WhatsApp reservations","Fully responsive"]}],
+    tags:["Hospitality","Web design","Conversion"] },
+
+  { id:"smithgarden", cat:"software", title:"Smith Garden Farmhouse", client:"Hospitality",
+    line:"A warm, garden-led website for an Airbnb Superhost farmhouse retreat.",
+    img:["smithgarden"], fit:"cover",
+    tagline:"A Kerala-style sanctuary, online: two distinct stays, a host-personal tone and direct enquiry built for 4.92★ hospitality.",
+    secs:[{h:"What we built", list:["Two distinct stays, each with its own story","Host-personal tone throughout","Direct enquiry flow","Fully responsive"]}],
+    tags:["Hospitality","Web design","Conversion"] },
+
+  { id:"mapping", cat:"spatial", title:"Real-time Mapping", client:"Spatial intelligence",
+    line:"Live 3D mapping of a space with Gaussian splats and SLAM.",
+    img:["splat-mapping"], video:"splat-mapping", fit:"contain",
+    tagline:"Enabling AI to understand its surroundings: a space is mapped in 3D as the camera moves through it.",
+    secs:[{h:"What it does", p:"Combines SLAM, which tracks where the camera is, with Gaussian splatting, which reconstructs the space as a detailed 3D scene, so a map builds up in real time."}],
+    tags:["SLAM","Gaussian splatting","Computer vision"] },
+
+  { id:"drones", cat:"spatial", title:"Level 2 Autonomy Drones", client:"Defence tech",
+    line:"Spatial intelligence for drones that support front-line soldiers.",
+    img:["drones"], fit:"cover",
+    tagline:"Part of our spatial intelligence work: Level 2 autonomy for drones used by front-line soldiers.",
+    secs:[{h:"Focus", list:["Spatial awareness for drones in the field","Level 2 autonomy to reduce operator load"]}],
+    tags:["Drones","Autonomy","Spatial AI"] },
+
+  { id:"dronesim", cat:"spatial", title:"DroneSim", client:"Defence tech", year:"2026",
+    line:"A tactical edge-case training simulator for kamikaze drones.",
+    img:[], fit:"cover",
+    tagline:"An AI simulation for training on tactical edge cases with kamikaze drones.",
+    secs:[{h:"What it is", p:"A simulator built so operators and systems can rehearse tactical edge cases that are hard to reproduce in the field."}],
+    tags:["AI simulation","Defence","Training"] },
+
+  { id:"witmer", cat:"spatial", title:"Companion AI", client:"Witmer",
+    line:"Spatial intelligence for a companion AI avatar.",
+    img:["witmer"], fit:"cover",
+    tagline:"Spatial intelligence work for Witmer's companion AI, so a digital companion can understand the space around it.",
+    secs:[{h:"Focus", list:["Spatial understanding for a companion AI","Real-time avatar inside a 3D engine"]}],
+    tags:["Companion AI","Spatial AI","3D"] },
+
+  { id:"curio-v2", cat:"spatial", title:"CuriO V2: Spatial Exploration", client:"Assistive tech",
+    line:"Helping blind students understand science through spatial exploration.",
+    img:["curio-v2"], fit:"cover",
+    tagline:"The next version of CuriO uses hand tracking so blind students can explore science spatially.",
+    secs:[{h:"What it adds", list:["Hand and fingertip tracking","Spatial exploration of science concepts","Builds on the CuriO tactile display"]}],
+    tags:["Assistive tech","Hand tracking","EdTech"] },
+
+  { id:"uvfy", cat:"hardware", title:"UVfy", client:"HealthTech", year:"2021",
+    line:"Autonomous UV-C disinfection for lifts and high-traffic indoor spaces.",
+    img:["uvfy-lift","uvfy-unit","uvfy"], fit:"contain",
+    tagline:"Automates UV-C disinfection in hospitals, offices and shared spaces, with scheduling, smart navigation and a dashboard that shows what was cleaned and when.",
+    secs:[
+      {h:"Key features", list:["Autonomous operation with minimal staff input","Targeted UV-C disinfection of high-touch zones","Companion dashboard for cycles, coverage and usage","IoT-connected hardware and software","Built for hospitals, offices, lifts and public areas"]},
+      {h:"Impact", p:"Built to lower infection risk for the 100+ healthcare workers and 3,000+ patients who can pass through a single facility each day. Covered by Digit and local print and TV news in 2021."}
+    ], tags:["IoT","Hardware","HealthTech","Dashboard"] },
+
+  { id:"curio", cat:"hardware", title:"CuriO", client:"Assistive tech", year:"2022–25",
+    line:"A refreshable tactile display, like an iPad for the blind.",
+    img:["curio","curio-span"], fit:"contain",
+    tagline:"A refreshable tactile tablet that lets blind learners feel diagrams, graphs and shapes.",
+    secs:[
+      {h:"Recognition", list:["Boeing Award, National Winner, 2024","Startup TN Award from the Hon'ble Chief Minister, 2023","Featured in SPAN Magazine by the US Embassy, 2025"]},
+      {h:"Supported by", p:"Healthcare Technology Innovation Centre, IITM Incubation Cell, Digital Impact Square, BIRAC, NIDHI PRAYAS, StartupTN and Prosus."}
+    ], tags:["Assistive tech","Hardware","Embedded"] },
+
+  { id:"excelscope", cat:"hardware", title:"Excelscope 2.0", client:"Medical device", year:"2018",
+    line:"Low-cost automated malaria diagnosis using a smartphone.",
+    img:["excelscope","excelscope-exploded","excelscope-proto","excelscope-phone"], fit:"contain",
+    tagline:"Reduces the workload of medical staff in developing countries by automating the analysis of blood samples.",
+    secs:[
+      {h:"How it works", p:"A smartphone, a ball-lens and algorithms magnify and identify malaria parasites (1 µm) in blood samples. The phone's back cover was modified to raise the camera module and hold the ball-lens. The sample sits on a 3-axis stage tuned for micro-stepping of 100 µm, which lets the device capture 800 fields of view in 8 mm², meeting the WHO recommendation for declaring a person malaria-free."},
+      {h:"Built for the field", p:"Designed for remote areas, with a 30,000 mAh battery. Developed with 3D-printed prototypes through to a finished device."},
+      {h:"Recognition", list:["James Dyson Award, International Title Winner, 2018","iF Design Award, 2020"]}
+    ], tags:["Medical device","Computer vision","Industrial design"] },
+
+  { id:"sleepingbag", cat:"hardware", title:"Heated Sleeping Bags", client:"Indian Army", year:"2022",
+    line:"Low-power heated sleeping bags for a high-altitude Indian Army patrol unit.",
+    img:["bag-test","bag-heater","bag-field"], fit:"cover",
+    tagline:"Low-power heated sleeping bags developed for a high-altitude Indian Army patrol unit.",
+    secs:[{h:"Focus", list:["Low-power heating elements built into the bag","Designed for high-altitude patrol conditions","Field-tested prototypes"]}],
+    tags:["Hardware","Defence","Low-power electronics"] },
+
+  { id:"oxygen", cat:"hardware", title:"Open-source Oxygen Concentrators", client:"Public health", year:"2021",
+    line:"Open-source oxygen concentrator development with the M19 Collective.",
+    img:["o2-build","o2-unit"], fit:"cover",
+    tagline:"dVerse was one of the M19 Collective labs developing the M19O2 open-source oxygen concentrator, an initiative started by Maker's Asylum.",
+    secs:[{h:"Our part", list:["Prototype build and testing","Shared our lab's learnings at the M19 live webinar, June 2021"]}],
+    tags:["Public health","Open source","Hardware"] },
+
+  { id:"gosafe", cat:"hardware", title:"GoSafe Wearable", client:"MIT Bootcamp, Brazil", year:"2018",
+    line:"An optical incapacitation wearable to protect against assaults.",
+    img:["gosafe","gosafe-test"], fit:"cover",
+    tagline:"A personal-safety wearable developed at the MIT Innovation Bootcamp in Brazil.",
+    secs:[{h:"What it does", p:"Uses an intense burst of light to temporarily incapacitate an attacker, giving the wearer time to get away."}],
+    tags:["Wearable","Safety","Hardware"] },
+
+  { id:"qblue", cat:"hardware", title:"QBlue", client:"QBlue", status:"In progress",
+    line:"Humanising hardware as a brand, with AI.",
+    img:["qblue"], fit:"cover",
+    tagline:"Brand and software work for QBlue's automated DEF dispensing stations.",
+    secs:[{h:"Focus", list:["A recognisable brand for a piece of industrial hardware","Software that connects the dispensers to a single platform"]}],
+    tags:["Hardware","Brand","AI","Platform"] }
+];
+
+const TIMELINE = [
+  {y:"2014", t:"Off-grid rice grader", w:"Ahmedabad", p:"Hand-driven device to separate stones and broken rice from whole grains."},
+  {y:"2015", t:"Pomegranate aril extractor", w:"Chennai", p:"Helps farmers sell value-added products, farm to consumer."},
+  {y:"2015", t:"Water conveyor", w:"Gobarwahi, Maharashtra", p:"An all-terrain device to carry water in rural areas."},
+  {y:"2018", t:"Excelscope 2.0", w:"James Dyson Award", p:"Low-cost automated malaria diagnosis on a smartphone.", id:"excelscope"},
+  {y:"2018", t:"GoSafe wearable", w:"MIT Bootcamp, Brazil", p:"An optical incapacitation wearable to protect against assaults.", id:"gosafe"},
+  {y:"2021", t:"UVfy", w:"Healthcare", p:"Autonomous UV-C disinfection for lifts and indoor spaces.", id:"uvfy"},
+  {y:"2021", t:"Oxygen concentrators", w:"M19 Collective", p:"Open-source oxygen concentrator development.", id:"oxygen"},
+  {y:"2022", t:"Heated sleeping bags", w:"Indian Army", p:"Low-power heating for a high-altitude patrol unit.", id:"sleepingbag"},
+  {y:"2022–25", t:"CuriO", w:"Assistive tech", p:"Refreshable tactile display, like an iPad for the blind.", id:"curio"},
+  {y:"2026", t:"DroneSim", w:"Defence tech", p:"Tactical edge-case training simulator for kamikaze drones.", id:"dronesim"}
+];
+
+const TEAM = [
+  ["raakesh","Raakesh Madhavan","Chief Technology Officer"],
+  ["sivagami","Sivagami Srinivasan","Chief Growth Officer"],
+  ["pratik","Pratik","Programming Analyst & Sr. Full Stack Developer"],
+  ["navaneeth","Navaneeth","Head of Partnerships & AI/ML Engineer"],
+  ["dharani","Dharani","Hardware Automation & Cybersecurity"],
+  ["bhupendra","Bhupendra","Sr. Backend Developer"],
+  ["satish","Satish","Frontend Developer"],
+  ["priya","Priya","Frontend Developer"]
+];
+
+const NEEDS = [
+  ["web","Web development"],["software","Software development"],["ai","AI automation"],["process","Process automation"],
+  ["mobile","Mobile app"],["decision","Decision intelligence"],["spatial","Spatial / simulation"],["hardware","Hardware & IoT"],["unsure","Not sure yet"]
+];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const byId = Object.fromEntries(P.map(p => [p.id, p]));
+const img = n => `img/${n}.webp`;
+/* Card image and treatment: cover = photo fills, frame = UI screenshot peeking from the corner, blend = product render on white */
+const CARD = {"ai-design-studio":["jr-library","cover"], flowinsight:["flowinsight","frame"], fikalearn:["fikalearn","blend"], career:["career","frame"],
+  orders:["orders","frame"], ccms:["ccms","frame"], meraki:["meraki","frame"], veganfinds:["veganfinds","blend"], uvfy:["uvfy-unit","cover"],
+  excelscope:["excelscope-exploded","blend"], sleepingbag:["bag-test","cover"]};
+const cardOf = p => CARD[p.id] || [p.img[0], "cover"];
+
+/* Reel */
+(function reel(){
+  const picks = ["ai-design-studio","drones","uvfy","curio","flowinsight","qblue","witmer","excelscope","beyou","saath","fikalearn","sleepingbag","smithgarden"];
+  const imgFor = {"ai-design-studio":"jr-library","uvfy":"uvfy-lift","excelscope":"excelscope-exploded","sleepingbag":"bag-field","curio":"curio"};
+  const html = picks.map(id => { const p = byId[id]; const src = imgFor[id] || p.img[0];
+    return `<button class="reel-item" data-open="${id}"><div class="ph"><img src="${img(src)}" alt="" loading="lazy"></div><div class="cap"><span>${esc(p.title)}</span><span class="mono">${esc(CATS[p.cat])}</span></div></button>`; }).join("");
+  const track = $("#reel");
+  track.innerHTML = html + html.replace(/<button /g, '<button tabindex="-1" aria-hidden="true" ');
+})();
+
+/* Filters + grid */
+let current = "all";
+function renderFilters(){
+  const counts = P.reduce((a,p) => (a[p.cat] = (a[p.cat]||0)+1, a), {});
+  const items = [["all","All",P.length], ...Object.entries(CATS).map(([k,v]) => [k,v,counts[k]||0])];
+  $("#filters").innerHTML = items.map(([k,v,n]) => `<button class="filter" data-filter="${k}" aria-pressed="${k===current}">${esc(v)} <sup>${n}</sup></button>`).join("");
+}
+function visible(){ return current === "all" ? P : P.filter(p => p.cat === current); }
+function renderGrid(){
+  $("#grid").innerHTML = visible().map(p => {
+    const media = p.img.length
+      ? `<img src="${img(cardOf(p)[0])}" alt="${esc(p.title)}" loading="lazy">`
+      : `<div class="blank"><span class="mono">${esc(CATS[p.cat])}${p.year ? " · " + p.year : ""}</span><b>${esc(p.title)}</b><span class="mono">Visuals on request</span></div>`;
+    return `<button class="card" data-open="${p.id}">
+      <div class="ph ${p.img.length ? cardOf(p)[1] : ""}">${media}${p.status ? `<span class="status">${esc(p.status)}</span>` : ""}</div>
+      <div class="meta"><span class="d">${esc(CATS[p.cat])}</span><span>${esc(p.year || p.client || "")}</span></div>
+      <h3>${esc(p.title)} <span class="go" aria-hidden="true">↗</span></h3>
+      <p>${esc(p.line)}</p>
+    </button>`;
+  }).join("");
+}
+$("#filters").addEventListener("click", e => {
+  const b = e.target.closest("[data-filter]"); if (!b) return;
+  current = b.dataset.filter; renderFilters(); renderGrid();
+});
+renderFilters(); renderGrid();
+
+/* Timeline + story pictures */
+$("#timeline").innerHTML = TIMELINE.map(t => `<div class="tl"><span class="dot" aria-hidden="true"></span><div class="yr">${t.y}</div><h4>${esc(t.t)}</h4><p>${esc(t.p)}</p><div class="where">${esc(t.w)}</div></div>`).join("");
+$("#storyPics").innerHTML = [["uvfy","uvfy-unit","UVfy · 2021"],["sleepingbag","bag-heater","Heated sleeping bag · 2022"],["excelscope","excelscope-proto","Excelscope prototype · 2018"],["oxygen","o2-build","Oxygen concentrator · 2021"]]
+  .map(([id,src,l]) => `<button data-open="${id}" aria-label="Open ${esc(byId[id].title)}"><img src="${img(src)}" alt="" loading="lazy"><span class="lbl">${esc(l)}</span></button>`).join("");
+
+/* Team */
+$("#teamGrid").innerHTML = TEAM.map(([k,n,r,pending]) => `<div class="member"><div class="av">${pending ? `<span class="ini" role="img" aria-label="${esc(n)}">${n.split(" ").map(w => w[0]).join("")}</span>` : `<img src="img/team-${k}.webp" alt="${esc(n)}" loading="lazy">`}</div><div><b>${esc(n)}</b><span>${esc(r)}</span></div></div>`).join("");
+
+/* Case dialog */
+const dlg = $("#case");
+let openId = null, list = P;
+function showMedia(p, i){
+  const m = $("#caseMedia");
+  if (p.video && i === 0) m.innerHTML = `<video src="img/${p.video}.mp4" poster="${img(p.img[0])}" autoplay muted loop playsinline></video>`;
+  else if (p.img.length) m.innerHTML = `<img src="${img(p.img[i])}" alt="${esc(p.title)}, image ${i+1} of ${p.img.length}">`;
+  else m.innerHTML = `<div class="blank" style="position:relative;width:100%;height:100%"><span class="mono">${esc(CATS[p.cat])}${p.year ? " · " + p.year : ""}</span><b>${esc(p.title)}</b><span class="mono">Visuals on request</span></div>`;
+  $("#caseThumbs").querySelectorAll("button").forEach((b,k) => b.setAttribute("aria-current", k === i));
+}
+function openCase(id){
+  const p = byId[id]; if (!p) return;
+  openId = id;
+  list = visible().some(x => x.id === id) ? visible() : P;
+  $("#caseCrumb").textContent = `${CATS[p.cat]} · ${list.indexOf(p)+1} / ${list.length}`;
+  $("#caseTitle").textContent = p.title;
+  $("#caseTag").textContent = p.tagline;
+  $("#caseThumbs").innerHTML = p.img.length > 1 ? p.img.map((n,k) => `<button data-i="${k}" aria-label="Show image ${k+1}"><img src="${img(n)}" alt=""></button>`).join("") : "";
+  $("#caseThumbs").hidden = p.img.length < 2;
+  showMedia(p, 0);
+  $("#caseSecs").innerHTML = p.secs.map(s => `<div class="case-sec"><h4>${esc(s.h)}</h4>${s.p ? `<p>${esc(s.p)}</p>` : `<ul>${s.list.map(li => `<li>${li.replace(/<(?!\/?b>)/g,"&lt;")}</li>`).join("")}</ul>`}</div>`).join("");
+  const rows = [["Domain", CATS[p.cat]], ["Client / context", p.client], p.year ? ["Year", p.year] : null, p.status ? ["Status", p.status] : null].filter(Boolean);
+  $("#caseAside").innerHTML = rows.map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("") +
+    `<div><dt>Tags</dt><dd><div class="chips">${p.tags.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div></dd></div>`;
+    if (!dlg.open) dlg.showModal();
+  dlg.scrollTop = 0;
+}
+function step(d){ const i = list.findIndex(p => p.id === openId); openCase(list[(i + d + list.length) % list.length].id); }
+document.addEventListener("click", e => {
+  const o = e.target.closest("[data-open]");
+  if (o) { e.preventDefault(); openCase(o.dataset.open); }
+});
+$("#caseThumbs").addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (b) showMedia(byId[openId], +b.dataset.i); });
+$("#caseClose").addEventListener("click", () => dlg.close());
+$("#casePrev").addEventListener("click", () => step(-1));
+$("#caseNext").addEventListener("click", () => step(1));
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener("keydown", e => { if (e.key === "ArrowRight") step(1); if (e.key === "ArrowLeft") step(-1); });
+dlg.addEventListener("close", () => { const v = dlg.querySelector("video"); if (v) v.pause(); });
+$("#caseCta").addEventListener("click", e => {
+  e.preventDefault();
+  const map = {ai:"ai", software:"software", spatial:"spatial", hardware:"hardware"};
+  const p = byId[openId];
+  dlg.close();
+  const box = document.querySelector(`#opts input[value="${map[p.cat]}"]`); if (box) box.checked = true;
+  const msg = $("#f-msg"); if (!msg.value) msg.value = `We'd like to discuss a project similar to ${p.title}.\n\n`;
+  $("#contact").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+  setTimeout(() => $("#f-name").focus({preventScroll:true}), 500);
+});
+
+/* Header: border on scroll, mobile menu */
+const headerEl = $("#top");
+const onScroll = () => headerEl.classList.toggle("scrolled", scrollY > 8);
+addEventListener("scroll", onScroll, {passive:true}); onScroll();
+const menuBtn = $("#menuBtn"), mnav = $("#mobileNav");
+menuBtn.addEventListener("click", () => { const o = mnav.hidden; mnav.hidden = !o; menuBtn.setAttribute("aria-expanded", o); menuBtn.setAttribute("aria-label", o ? "Close menu" : "Open menu"); });
+mnav.addEventListener("click", e => { if (e.target.closest("a")) { mnav.hidden = true; menuBtn.setAttribute("aria-expanded", false); } });
+
+/* Contact */
+const todo = t => `<span class="todo">${t}</span>`;
+$("#direct").innerHTML = [
+  ["Email", CONFIG.email ? esc(CONFIG.email) : todo("Add contact email")],
+  ["Based in", esc(CONFIG.location)]
+].map(([k,v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+$("#opts").innerHTML = NEEDS.map(([v,l]) => `<label class="opt"><input type="checkbox" name="need" value="${v}" id="need-${v}"><span>${esc(l)}</span></label>`).join("");
+
+const form = $("#form");
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const f = new FormData(form);
+  const name = (f.get("name")||"").trim(), email = (f.get("email")||"").trim(), msg = (f.get("message")||"").trim();
+  const err = $("#err");
+  const missing = [];
+  if (!name) missing.push("your name");
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) missing.push("a valid work email");
+  if (!msg) missing.push("a few lines about the project");
+  if (missing.length) { err.textContent = "Please add " + missing.join(", ") + "."; err.hidden = false; return; }
+  err.hidden = true;
+  const needs = f.getAll("need").map(v => (NEEDS.find(n => n[0] === v)||[,v])[1]);
+  const text = [
+    "New consultation enquiry",
+    "",
+    "Name: " + name,
+    "Company: " + ((f.get("company")||"").trim() || "—"),
+    "Email: " + email,
+    "Phone: " + ((f.get("phone")||"").trim() || "—"),
+    "Interested in: " + (needs.join(", ") || "—"),
+    "",
+    msg
+  ].join("\n");
+  $("#summary").textContent = text;
+  $("#sendTo").innerHTML = CONFIG.email
+    ? `Copy it and send it to <b style="user-select:all">${esc(CONFIG.email)}</b>, or open it in your email app.`
+    : `Copy it and send it to ${todo("Add contact email")}.`;
+  const mail = $("#mailBtn");
+  if (CONFIG.email) { mail.hidden = false; mail.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent("Consultation enquiry: " + ((f.get("company")||"").trim() || name))}&body=${encodeURIComponent(text)}`; }
+  else mail.hidden = true;
+  $("#formFields").hidden = true; $("#sent").hidden = false;
+});
+$("#editBtn").addEventListener("click", () => { $("#sent").hidden = true; $("#formFields").hidden = false; });
+$("#copyBtn").addEventListener("click", async () => {
+  const b = $("#copyBtn"), t = $("#summary").textContent;
+  try { await navigator.clipboard.writeText(t); b.textContent = "Copied"; }
+  catch { const r = document.createRange(); r.selectNodeContents($("#summary")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected, press Ctrl+C"; }
+  setTimeout(() => b.textContent = "Copy enquiry", 2200);
+});
+</script>
+
+</body>
+</html>
