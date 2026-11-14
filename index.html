@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <style>
 /* Layout: a white spec-sheet canvas. X-style media tiles for the work, a DJI-style bento for services,
    one black band for the hardware story, mono annotations like an engineering drawing. Single light theme by request. */
@@ -35,6 +37,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
+html:has(dialog[open]){overflow:hidden}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{background:var(--paper);color:var(--ink);font-family:var(--f-sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
@@ -87,12 +90,12 @@ p{margin:0}
 .mobile-nav .wrap{display:grid;gap:4px;padding-block:12px 20px}
 .mobile-nav a{text-decoration:none;padding:12px 0;font-size:1.15rem;border-bottom:1px solid var(--line)}
 .mobile-nav .btn{margin-top:14px;justify-content:center}
-@media (max-width:900px){.nav{display:none}.top .cta-desk{display:none}.menu-btn{display:inline-flex}}
+@media (max-width:960px){.nav{display:none}.top .cta-desk{display:none}.menu-btn{display:inline-flex}}
 
 /* Hero */
 .hero{padding-block:clamp(40px,7vw,96px) 0}
 .hero-meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
-.hero h1{font-size:clamp(3rem,9.6vw,9rem);line-height:.92;letter-spacing:-.055em;font-weight:600}
+.hero h1{font-size:clamp(2.6rem,9.6vw,9rem);line-height:.92;letter-spacing:-.055em;font-weight:600}
 .hero h1 em{font-style:normal;color:var(--blue)}
 .hero-row{display:grid;gap:40px;margin-top:clamp(32px,4vw,56px)}
 @media (min-width:980px){.hero-row{grid-template-columns:1.1fr 1fr;column-gap:80px;align-items:start}}
@@ -100,7 +103,8 @@ p{margin:0}
 .spec{border-top:1px solid var(--ink);font-variant-numeric:tabular-nums}
 .spec div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .spec dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
-.spec dd{margin:0;text-align:right;font-weight:500}
+.spec dd{margin:0;text-align:right;font-weight:500;text-wrap:balance}
+.spec dd span{white-space:nowrap}
 .spec dd.big{font-size:1.6rem;letter-spacing:-.03em;line-height:1}
 .spec-note{font-family:var(--f-mono);font-size:.7rem;color:var(--mute);margin-top:10px;letter-spacing:.04em}
 
@@ -121,6 +125,17 @@ p{margin:0}
 .clients{padding-block:clamp(56px,7vw,88px) 0}
 .clients-row{display:flex;flex-wrap:wrap;gap:12px 40px;align-items:baseline;margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
 .clients-row span{font-size:clamp(1.15rem,2vw,1.6rem);letter-spacing:-.025em;font-weight:500;color:var(--ink-2)}
+
+.logos{margin-top:22px;padding-top:28px;border-top:1px solid var(--line);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.logos-track{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:72px;width:max-content}
+.logos-track.run{animation:reel 42s linear infinite}
+.logos:hover .logos-track{animation-play-state:paused}
+.logos-track li{flex:none;display:flex;align-items:center;height:48px}
+.logos-track img{width:auto;max-width:none;filter:grayscale(1);opacity:.8;transition:filter .3s ease,opacity .3s ease}
+.logos-track li:hover img{filter:none;opacity:1}
+.wordmark{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);opacity:.62;white-space:nowrap;transition:opacity .3s ease}
+.logos-track li:hover .wordmark{opacity:.9}
+@media (prefers-reduced-motion:reduce){.logos{-webkit-mask-image:none;mask-image:none}.logos-track{flex-wrap:wrap;width:auto;gap:28px 48px}.logos-track.run{animation:none}}
 
 /* Services bento */
 .bento{display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-areas:"ai ai proc proc" "ai ai soft web" "mob dec spat spat" "ux cloud hw hw"}
@@ -167,7 +182,7 @@ p{margin:0}
 .term span{color:var(--ink-2);font-size:1.05rem}
 .term .mono{color:var(--blue-deep);font-size:.7rem}
 .plus{align-self:center;font-size:2.5rem;font-weight:300;color:var(--blue-deep);line-height:1}
-@media (max-width:860px){.equation{grid-template-columns:1fr}.plus{justify-self:center;font-size:2rem}}
+@media (max-width:860px){.equation{grid-template-columns:1fr}.plus{justify-self:center;font-size:2rem}.term{min-height:0;gap:18px}}
 .why{margin-top:clamp(64px,8vw,112px);display:grid;gap:28px}
 @media (min-width:980px){.why{grid-template-columns:1fr 1.6fr;column-gap:64px;align-items:start}}
 .why h3{font-size:clamp(1.75rem,3vw,2.6rem);letter-spacing:-.035em;line-height:1.05}
@@ -216,8 +231,12 @@ p{margin:0}
 .story .eyebrow{color:var(--night-mute)}
 .story .lead{color:#c9d2d4}
 .story .h2 em{font-style:normal;color:var(--blue)}
-.timeline{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:thin;scrollbar-color:var(--night-line) transparent}
-.tl{flex:0 0 clamp(240px,24vw,300px);scroll-snap-align:start;padding:0 28px 0 0;position:relative}
+.timeline{position:relative;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;padding-block:4px 10px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 90%,transparent)}
+.timeline.dragging{cursor:grabbing}
+.timeline:focus{outline:none}
+.timeline:focus-visible{outline:2px solid var(--blue);outline-offset:6px;border-radius:12px}
+.tl-track{display:flex;width:max-content;will-change:transform}
+.tl{flex:0 0 clamp(230px,24vw,300px);padding:0 28px 0 0;position:relative}
 .tl::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:var(--night-line)}
 .tl .dot{position:relative;width:19px;height:19px;border-radius:50%;border:1px solid var(--blue);background:var(--night);display:grid;place-items:center}
 .tl .dot::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue)}
@@ -281,6 +300,7 @@ p{margin:0}
 .direct dd{margin:0;font-weight:500;user-select:all}
 .direct dd a{user-select:auto}
 .todo{display:inline-block;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.02em;padding:3px 10px;border:1px dashed rgba(10,14,15,.55);border-radius:8px;user-select:none;font-weight:400}
+
 .form{background:var(--paper);border-radius:var(--r-lg);padding:clamp(22px,3vw,36px);display:grid;gap:18px;box-shadow:0 30px 60px -30px rgba(4,6,7,.35)}
 .form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media (max-width:560px){.form .two{grid-template-columns:1fr}}
@@ -302,6 +322,14 @@ fieldset.field{border:0;margin:0;padding:0}
 .sent h3{font-size:1.5rem;letter-spacing:-.03em}
 .sent pre{margin:0;white-space:pre-wrap;font-family:var(--f-mono);font-size:.8rem;line-height:1.6;background:var(--tint);border-radius:12px;padding:16px;max-height:260px;overflow:auto}
 .sent .row{display:flex;gap:10px;flex-wrap:wrap}
+.book{background:var(--paper);border-radius:var(--r-lg);padding:clamp(24px,3vw,40px);display:grid;gap:20px;align-content:start;box-shadow:0 30px 60px -30px rgba(4,6,7,.35)}
+.book h3{font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:-.035em;line-height:1.05}
+.book .tz{color:var(--ink-2);font-size:.95rem}
+.book .btn{justify-content:center;height:56px;font-size:1.05rem}
+.book-call{display:grid;gap:16px}
+.book .form{background:none;box-shadow:none;border-radius:0;padding:0}
+.or{display:flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* Footer */
 .foot{padding-block:56px 40px;border-top:1px solid var(--line)}
@@ -388,10 +416,10 @@ dialog.case::backdrop{background:rgba(4,6,7,.55);backdrop-filter:blur(4px)}
 
 /* Service tiles: lift and a soft spotlight that follows the cursor */
 .tile{transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.tile:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(4,6,7,.35)}
+@media (hover:hover){.tile:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(4,6,7,.35)}}
 .tile::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(26,190,211,.2),transparent 65%);opacity:0;transition:opacity .4s ease;pointer-events:none}
 .t-proc::before{background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 65%)}
-.tile:hover::before{opacity:1}
+@media (hover:hover){.tile:hover::before{opacity:1}}
 .tile>*:not(video){position:relative;z-index:1}
 
 /* Case-study dialog */
@@ -422,7 +450,7 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
       <a href="#recognition">Recognition</a>
       <a href="#team">Team</a>
     </nav>
-    <a class="btn btn-ink cta-desk" href="#contact">Book a consultation <span class="arr" aria-hidden="true">→</span></a>
+    <a class="btn btn-ink cta-desk" href="#contact" data-book>Book a consultation <span class="arr" aria-hidden="true">→</span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu"><span></span></button>
   </div>
   <div class="mobile-nav" id="mobileNav" hidden>
@@ -432,7 +460,7 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
       <a href="#approach">Approach</a>
       <a href="#recognition">Recognition</a>
       <a href="#team">Team</a>
-      <a class="btn btn-blue" href="#contact">Book a consultation</a>
+      <a class="btn btn-blue" href="#contact" data-book>Book a consultation</a>
     </div>
   </div>
 </header>
@@ -450,7 +478,7 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
         <div>
           <p class="lead in" style="--d:.35s">dVerse Technologies is an AI and product engineering company. We design and build AI automation, software, web platforms and physical products for manufacturers, hospitals, city infrastructure, education and government.</p>
           <div class="hero-ctas in" style="--d:.5s">
-            <a class="btn btn-blue" href="#contact">Book a consultation <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn-blue" href="#contact" data-book>Book a consultation <span class="arr" aria-hidden="true">→</span></a>
             <a class="btn btn-ghost" href="#work">See the work</a>
           </div>
         </div>
@@ -458,7 +486,7 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
           <dl class="spec in" style="--d:.45s">
             <div style="--i:0"><dt>Projects shipped</dt><dd class="big" data-count="20">20+</dd></div>
             <div style="--i:1"><dt>Industries served</dt><dd class="big" data-count="12">12+</dd></div>
-            <div style="--i:2"><dt>Practice</dt><dd>AI · Software · Product Design · Hardware</dd></div>
+            <div style="--i:2"><dt>Practice</dt><dd><span>AI</span> · <span>Software</span> · <span>Product Design</span> · <span>Hardware</span></dd></div>
           </dl>
         </div>
       </div>
@@ -471,14 +499,16 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
   <section class="clients" aria-labelledby="clientsLbl">
     <div class="wrap">
       <span class="eyebrow" id="clientsLbl">Clients &amp; collaborators</span>
-      <div class="clients-row">
-        <span>Jaipur Rugs</span>
-        <span>Government of Tamil Nadu</span>
-        <span>Cancer Institute (WIA)</span>
-        <span>Witmer</span>
-        <span>QBlue</span>
-        <span>Luna Park &amp; Resort</span>
-        <span>Smith Garden Farmhouse</span>
+      <div class="logos" aria-label="Clients and collaborators">
+        <ul class="logos-track" id="logos">
+          <li><img src="img/logo-jaipur-rugs.webp" alt="Jaipur Rugs" style="height:22px" loading="lazy"></li>
+          <li><span class="wordmark">Government of Tamil Nadu</span></li>
+          <li><img src="img/logo-cancer-institute.webp" alt="Cancer Institute (WIA)" style="height:34px" loading="lazy"></li>
+          <li><span class="wordmark">Luna Park &amp; Resort</span></li>
+          <li><img src="img/logo-witmer.webp" alt="Witmer" style="height:30px" loading="lazy"></li>
+          <li><span class="wordmark">Smith Garden Farmhouse</span></li>
+          <li><img src="img/logo-qblue.webp" alt="QBlue" style="height:40px" loading="lazy"></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -628,9 +658,9 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
       <div class="sec-head">
         <span class="eyebrow">Phygital</span>
         <h2 class="h2">It all started with physical&nbsp;+&nbsp;digital systems.</h2>
-        <p class="lead">We started out building devices for farms, clinics and field teams. The same team now builds the AI and software that runs around them.</p>
+        <p class="lead">We started out building devices for farms, clinics, hospitals and field units. Today the same team also builds AI and software for companies.</p>
       </div>
-      <div class="timeline" id="timeline" tabindex="0" aria-label="Timeline of hardware projects, scrolls sideways"></div>
+      <div class="timeline" id="timeline" tabindex="0" role="region" aria-label="Timeline from 2014 to now. Drag, swipe or use the arrow keys to move it."><div class="tl-track" id="tlTrack"></div></div>
     </div>
   </section>
 
@@ -682,7 +712,7 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
             <li>Youth for India Fellow</li>
             <li>MIT Innovation Bootcamper</li>
           </ul>
-          <p class="teach">Krishna also teaches product and systems thinking, with workshops for NID Ahmedabad, the IIT Madras PALS initiative and Teach for India. <a href="https://www.krishnathiruvengadam.com" target="_blank" rel="noopener">krishnathiruvengadam.com ↗</a></p>
+          <p class="teach">Krishna also teaches product and systems thinking, with workshops for NID Ahmedabad, the IIT Madras PALS initiative and Youth for India. <a href="https://www.krishnathiruvengadam.com" target="_blank" rel="noopener">krishnathiruvengadam.com ↗</a></p>
         </div>
       </div>
       <div class="team" id="teamGrid"></div>
@@ -694,10 +724,18 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
       <div>
         <span class="eyebrow">Book a consultation</span>
         <h2 class="h2" style="margin-top:22px">Let's build something that works.</h2>
-        <p class="lead">Tell us what you want to automate, build or fix. We get back to you within one business day.</p>
+        <p class="lead">Book a call or send us a note about what you want to automate, build or fix.</p>
         <dl class="direct" id="direct"></dl>
       </div>
-      <form class="form" id="form" novalidate>
+      <div class="book" id="book">
+        <div class="book-call">
+          <span class="eyebrow">Consultation call</span>
+          <h3>Schedule a call with our team</h3>
+          <a class="btn btn-blue" href="#contact" data-book>Pick a time <span class="arr" aria-hidden="true">→</span></a>
+          <p class="tz" id="bookNote" hidden></p>
+        </div>
+        <div class="or"><span>or send us an enquiry</span></div>
+        <form class="form" id="form" novalidate>
         <div id="formFields" style="display:grid;gap:18px">
           <div class="two">
             <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -727,6 +765,7 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
           </div>
         </div>
       </form>
+      </div>
     </div>
   </section>
 </main>
@@ -781,7 +820,7 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
       </div>
       <aside>
         <dl class="case-aside" id="caseAside"></dl>
-        <a class="btn btn-blue" href="#contact" id="caseCta" style="width:100%">Discuss a similar project <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-blue" href="#contact" id="caseCta" data-book style="width:100%">Discuss a similar project <span class="arr" aria-hidden="true">→</span></a>
       </aside>
     </div>
   </div>
@@ -791,6 +830,7 @@ dialog.case[open]::backdrop{animation:fade .4s ease}
 /* ---------- Edit these before going live ---------- */
 const CONFIG = {
   email: "krishna@dverselabs.com",
+  calendly: "https://calendly.com/dverselabs/consultation-call",
   location: "Chennai, India"
 };
 
@@ -1015,7 +1055,8 @@ const TIMELINE = [
   {y:"2021", t:"Oxygen concentrators", w:"M19 Collective", p:"Open-source oxygen concentrator development.", id:"oxygen"},
   {y:"2022", t:"Heated sleeping bags", w:"Indian Army", p:"Low-power heating for a high-altitude patrol unit.", id:"sleepingbag"},
   {y:"2022–25", t:"CuriO", w:"Assistive tech", p:"Refreshable tactile display, like an iPad for the blind.", id:"curio"},
-  {y:"2026", t:"DroneSim", w:"Defence tech", p:"Tactical edge-case training simulator for kamikaze drones.", id:"dronesim"}
+  {y:"2026", t:"DroneSim", w:"AI simulation", p:"Tactical edge-case training simulator for kamikaze drones.", id:"dronesim"},
+  {y:"Now", t:"AI & software for companies", w:"Consulting", p:"AI design tools for Jaipur Rugs, decision intelligence, AI tutors and smart street light dashboards."}
 ];
 
 const TEAM = [
@@ -1028,11 +1069,11 @@ const TEAM = [
   ["satish","Satish","Frontend Developer"],
   ["priya","Priya","Frontend Developer"]
 ];
-
 const NEEDS = [
   ["web","Web development"],["software","Software development"],["ai","AI automation"],["process","Process automation"],
   ["mobile","Mobile app"],["decision","Decision intelligence"],["spatial","Spatial / simulation"],["hardware","Hardware & IoT"],["unsure","Not sure yet"]
 ];
+
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -1092,7 +1133,69 @@ renderFilters(); renderGrid();
 $("#moreBtn").addEventListener("click", () => { expanded = true; renderGrid(SHOW); });
 
 /* Timeline + story pictures */
-$("#timeline").innerHTML = TIMELINE.map(t => `<div class="tl"><span class="dot" aria-hidden="true"></span><div class="yr">${t.y}</div><h4>${esc(t.t)}</h4><p>${esc(t.p)}</p><div class="where">${esc(t.w)}</div></div>`).join("");
+const tlHTML = TIMELINE.map(t => `<div class="tl"><span class="dot" aria-hidden="true"></span><div class="yr">${t.y}</div><h4>${esc(t.t)}</h4><p>${esc(t.p)}</p><div class="where">${esc(t.w)}</div></div>`).join("");;
+$("#tlTrack").innerHTML = tlHTML + tlHTML.replace(/<div class="tl">/g, '<div class="tl" aria-hidden="true">');
+
+/* Timeline: glides slowly on its own; drag, swipe or arrow keys move it, with momentum after a push */
+(function timelineSlider(){
+  const vp = $("#timeline"), track = $("#tlTrack");
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const SPEED = 26;                                  // px per second while gliding
+  let x = 0, v = 0, setW = 0, last = 0, running = false, onScreen = true;
+  let dragging = false, hover = false, holdUntil = 0, startX = 0, startOff = 0, lastX = 0, lastT = 0;
+  const measure = () => { setW = track.scrollWidth / 2; wrap(); paint(); };
+  function wrap(){
+    if (!setW) return;
+    while (x <= -setW) { x += setW; startOff += setW; }
+    while (x > 0) { x -= setW; startOff -= setW; }
+  }
+  const paint = () => { track.style.transform = `translate3d(${x.toFixed(2)}px,0,0)`; };
+  function frame(now){
+    if (!running) return;
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (!dragging) {
+      if (Math.abs(v) > 8) { x += v * dt; v *= Math.pow(0.03, dt); }
+      else { v = 0; if (!still && !hover && now > holdUntil) x -= SPEED * dt; }
+      wrap(); paint();
+    }
+    requestAnimationFrame(frame);
+  }
+  function start(){ if (running || !onScreen) return; running = true; last = performance.now(); requestAnimationFrame(frame); }
+  function stop(){ running = false; }
+  vp.addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    dragging = true; v = 0; startX = lastX = e.clientX; startOff = x; lastT = performance.now();
+    try { vp.setPointerCapture(e.pointerId); } catch {}
+    vp.classList.add("dragging");
+    if (e.pointerType === "mouse") e.preventDefault();
+  });
+  vp.addEventListener("pointermove", e => {
+    if (!dragging) return;
+    const now = performance.now();
+    x = startOff + (e.clientX - startX); wrap(); paint();
+    const dtm = (now - lastT) / 1000;
+    if (dtm > 0) v = 0.75 * ((e.clientX - lastX) / dtm) + 0.25 * v;
+    lastX = e.clientX; lastT = now;
+  });
+  const end = () => {
+    if (!dragging) return;
+    dragging = false; vp.classList.remove("dragging");
+    if (performance.now() - lastT > 90) v = 0;
+    v = Math.max(-2600, Math.min(2600, v));
+    holdUntil = performance.now() + 1800;
+  };
+  vp.addEventListener("pointerup", end);
+  vp.addEventListener("pointercancel", end);
+  vp.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") hover = true; });
+  vp.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") hover = false; end(); });
+  vp.addEventListener("keydown", e => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault(); v = e.key === "ArrowRight" ? -1100 : 1100; holdUntil = performance.now() + 2500;
+  });
+  if ("ResizeObserver" in window) new ResizeObserver(measure).observe(track); else addEventListener("resize", measure);
+  if ("IntersectionObserver" in window) new IntersectionObserver(([en]) => { onScreen = en.isIntersecting; onScreen ? start() : stop(); }).observe(vp);
+  measure(); start();
+})();
 
 /* Team */
 $("#teamGrid").innerHTML = TEAM.map(([k,n,r,pending]) => `<div class="member"><div class="av">${pending ? `<span class="ini" role="img" aria-label="${esc(n)}">${n.split(" ").map(w => w[0]).join("")}</span>` : `<img src="img/team-${k}.webp" alt="${esc(n)}" loading="lazy">`}</div><div><b>${esc(n)}</b><span>${esc(r)}</span></div></div>`).join("");
@@ -1114,6 +1217,7 @@ function openCase(id){
   $("#caseCrumb").textContent = `${CATS[p.cat]} · ${list.indexOf(p)+1} / ${list.length}`;
   $("#caseTitle").textContent = p.title;
   $("#caseTag").textContent = p.tagline;
+  $("#caseCta").dataset.note = `Interested in a project similar to ${p.title}`;
   $("#caseThumbs").innerHTML = p.img.length > 1 ? p.img.map((n,k) => `<button data-i="${k}" aria-label="Show image ${k+1}"><img src="${img(n)}" alt=""></button>`).join("") : "";
   $("#caseThumbs").hidden = p.img.length < 2;
   showMedia(p, 0);
@@ -1136,16 +1240,7 @@ $("#caseNext").addEventListener("click", () => step(1));
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 dlg.addEventListener("keydown", e => { if (e.key === "ArrowRight") step(1); if (e.key === "ArrowLeft") step(-1); });
 dlg.addEventListener("close", () => { const v = dlg.querySelector("video"); if (v) v.pause(); });
-$("#caseCta").addEventListener("click", e => {
-  e.preventDefault();
-  const map = {ai:"ai", software:"software", spatial:"spatial", hardware:"hardware"};
-  const p = byId[openId];
-  dlg.close();
-  const box = document.querySelector(`#opts input[value="${map[p.cat]}"]`); if (box) box.checked = true;
-  const msg = $("#f-msg"); if (!msg.value) msg.value = `We'd like to discuss a project similar to ${p.title}.\n\n`;
-  $("#contact").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
-  setTimeout(() => $("#f-name").focus({preventScroll:true}), 500);
-});
+$("#caseCta").addEventListener("click", () => dlg.close());
 
 /* Header: border on scroll, mobile menu */
 const headerEl = $("#top");
@@ -1168,6 +1263,8 @@ $("#direct").innerHTML = [
   ["Email", CONFIG.email ? esc(CONFIG.email) : todo("Add contact email")],
   ["Based in", esc(CONFIG.location)]
 ].map(([k,v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+
+
 $("#opts").innerHTML = NEEDS.map(([v,l]) => `<label class="opt"><input type="checkbox" name="need" value="${v}" id="need-${v}"><span>${esc(l)}</span></label>`).join("");
 
 const form = $("#form");
@@ -1209,6 +1306,34 @@ $("#copyBtn").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(t); b.textContent = "Copied"; }
   catch { const r = document.createRange(); r.selectNodeContents($("#summary")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected, press Ctrl+C"; }
   setTimeout(() => b.textContent = "Copy enquiry", 2200);
+});
+
+/* Client logos: duplicate the set so the strip loops seamlessly */
+(function logoStrip(){
+  const t = $("#logos"); if (!t) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  [...t.children].forEach(li => { const c = li.cloneNode(true); c.setAttribute("aria-hidden", "true"); c.querySelectorAll("img").forEach(i => i.alt = ""); t.append(c); });
+  t.classList.add("run");
+})();
+
+/* ---------- Booking: every "Book a consultation" button opens the Calendly scheduler ---------- */
+const bookUrl = (() => {
+  if (!CONFIG.calendly) return "";
+  try { const u = new URL(CONFIG.calendly); u.searchParams.set("primary_color", "1abed3"); return u.toString(); }
+  catch { return ""; }
+})();
+document.querySelectorAll("[data-book]").forEach(a => {
+  if (bookUrl) { a.href = bookUrl; a.target = "_blank"; a.rel = "noopener"; }
+});
+if (!bookUrl) { const n = $("#bookNote"); n.innerHTML = `<span class="todo">Add Calendly link in CONFIG</span>`; n.hidden = false; }
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-book]");
+  if (!a || !bookUrl) return;                       // no link yet: the button scrolls to the contact section
+  if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+    e.preventDefault();
+    const note = a.dataset.note;
+    window.Calendly.initPopupWidget({ url: bookUrl, prefill: note ? { customAnswers: { a1: note } } : {} });
+  }                                                 // widget not loaded: the link opens Calendly in a new tab
 });
 
 /* ---------- Motion ---------- */
@@ -1365,7 +1490,7 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   });
 
   reveal(document.querySelectorAll(".h2"));
-  reveal(document.querySelectorAll(".sec-head .eyebrow, .sec-head .lead, .clients-row span, .tile, .term, .plus, .step, .why > div:first-child, .filters, .card, .tl, .award, .rec-pics figure, .press-row span, .founder > *, .member, .contact .lead, .direct, .form, .foot-grid > *"));
+  reveal(document.querySelectorAll(".sec-head .eyebrow, .sec-head .lead, .logos, .tile, .term, .plus, .step, .why > div:first-child, .filters, .card, .tl, .award, .rec-pics figure, .press-row span, .founder > *, .member, .contact .lead, .direct, .book, .foot-grid > *"));
 })();
 
 /* Service tiles: spotlight follows the cursor */
